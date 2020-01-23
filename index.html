@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<table border = "1">
+  <caption> 
+    서적 정보 
+  </caption>
+  <tr>
+    <th>
+      항목 (속성:property)
+    </th>
+    <th>
+      내용 (값:value)
+    </th>
+  </tr>
+  <script type="text/javascript">
+    var book = new Object();
+    book.title = "멀티미디어 배움터2.0";
+    book.publisher = "생능출판사";
+    book.author = "최윤철, 임순범";
+    book.price = "25000원";
+    book.info = new Object();
+    book.info.pages = 442;
+    book.info.date = "2010년 1월 30일";
+    book.info.ISBN10 = 8970506470;
+    book.info.size = "188mm*254mm";
+    
+    for( var p in book){
+      if(typeof(book[p]) != "object"){
+        document.write("<tr>");
+        document.write("<td> book."+ p + "</td>");
+        document.write("<td> "+ book[p] + "</td>");
+        document.write("</tr>");
+      }
+      else{
+        for(var q in book[p]){
+          document.write("<tr>");
+          document.write("<td> book." + p + "." + q + "</td>");
+          document.write("<td> " + book[p][q] + "</td>");
+          document.write("</tr>");
+        }
+      }
+    }
+  </script>
+
+
+</table>
+<br><br><br><br>
+<form>
+  추천도서:<input id="recommend" type="text" size="50">
+</form>
+
+<script type="text/javascript">
+  dom = document.getElementById("recommend");
+  dom.value = "컴퓨터와 IT기술의 이해";
+</script>
+
+
+<br><br><br><br><br><br>
+<form action="">
+  <input id="username" type="text" value="Name of User" />
+</form>
+
+<script type = "text/javascript">
+  var dom = document.getElementById("username");
+  alert(dom.value);
+  var newValue = prompt("Type new value of text box", "");
+  dom.value = newValue;
+</script>
+
+<br><br><br><br><br><br>
+
+<html lang="en">
+<head>
+  <title>CSS Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<header>
+  <h2>박 성 만</h2>
+  <h4> (SEONGMAN PARK) </h4>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <img src = "내 사진.jpg" alt= "박성만" width="110" height = "150">
+        <br>
+        <a href="http://school.gyo6.net/gyeongjuhs/0104/sub">
+          Gyeongju High School
+        </a>
+        <br>
+        <a href="http://www.hongik.ac.kr/index.do">
+          Hongik University
+        </a>
+    </ul>
+  </nav>
+  
+  <article>
+        <h4>관심 분야</h4>
+        <p class="article_box">
+          Embedded System
+        </p>
+        <h4>좋아하는 과목</h4>
+        <p class="article_box">
+          Operationg System, System Programming, Algorithm
+        </p>
+        <h4>가고싶은 기업</h4>
+        <p class="article_box">LIG Nex1, SAMSUNG, LG, HANHWA, HYUNDAI ...</p>
+  </article>
+  
+</section>
+
+<footer>
+  <div>
+    <a href="#">Phone</a>
+  </div>
+  <div>
+    <a href="#">EMail</a>
+  </div>
+  <div>
+    <a href="#">Portfolio</a>
+  </div>
+  <div>
+    <a href="introduce.html" target=frame>자기소개서</a>
+  </div>
+</footer>
+
+<header style="background-color:rgb(73, 34, 20)">
+  <h5 style="text-align:center">
+    자기소개서
+    <div style="background-color:darkgreen">
+       안녕하세요 어렵지만 열심히 하겠습니다. 감사합니다.
+    </div>
+  </h5>
+</header>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<script type="text/javascript">
+    var time = new Date();
+    var y = time.getFullYear();
+    var m = today.getMonth() + 1;
+    var d = today.getDate();
+    var h = today.getHours();
+    var min = today.getMinutes();
+    var s = today.getSeconds();
+
+    function UpLoad(){
+        
+    }
+</script>
+<head>
+    <link rel="stylesheet" href="guestbook.css">
+</head>
+
+<body>
+    <table border = "1" style="text-align: center">
+        <caption> 방 명 록 </caption>
+        <tr>
+            <th>
+                글쓴이
+            </th>
+            <td>
+                <form>
+                    <input id="Name" type="text" size="50">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                E-mail
+            </th>
+            <td>
+                <form>
+                    <input id="E-mail" type="text" size="50">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                입력 날짜
+            </th>
+            <td>
+                    <script type="text/javascript">
+                        var time = new Date();
+                        var y = time.getFullYear();
+                        var m = time.getMonth() + 1;
+                        var d = time.getDate();
+                        var h = time.getHours();
+                        var min = time.getMinutes();
+                        var s = time.getSeconds();
+                        document.write(y + "년 " + m + "월 " + d + "일 " + h + "시 " + min + "분 " + s + "초 ");
+                    </script>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                제목
+            </th>
+            <td>
+                <form>
+                    <input id="Title" type="text" size="50">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                내용
+            </th>
+            <td>
+                <form>
+                    <input id="Content" type="text" size="50">
+                </form>
+            </td>
+        </tr>
+    </table>
+        <br>
+
+        <button onclick="">
+            보내기
+        </button>
+        <button>
+            <a href="guestbook.html" taget="frame"> 취소 </a>
+        </button>
+
+</body>
