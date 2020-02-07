@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="description" content="Weather"/>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://unpkg.com/vue"></script>
+        <title>Weather</title>
+    </head>
+    <body>
+        <div class="widget">
+                    
+            <div class="left-panel panel">
+                <div class="date">
+                    {{ today }}
+                </div>
+                <div class="city">
+                    {{cityName}}
+                </div>
+                <div class="temp">
+                <img v-bind:src="weather_src[weather_n].src" alt="" width="60">
+                {{temperature}}&deg;/{{humidity}}&percnt;
+                </div>
+            </div>
+            
+            <div class="cityimage panel">
+                <img v-bind:src="citys[city_n].src" alt="" width="160">
+            </div>
+
+        </div>
+
+        <script>
+        var vm = new Vue({
+            el: '.widget',
+            data: 
+            {
+                temperature: '32',
+                humidity: '78',
+                a : 1,
+                weather_n:0,
+                cityName : "MUMBAI",
+               weather_src:[{state : '비' ,src :'https://s5.postimg.cc/yzcm7htyb/image.png'},{state:'맑음', src:'data:image/png;base64,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'},
+                {state:'흐림', src:'data:image/jpeg;base64,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'},
+                {state:'눈', src:'https://previews.123rf.com/images/luplupme/luplupme1607/luplupme160700106/59439415-%EB%88%88-%ED%8F%AD%ED%92%8D-%EA%B8%B0%EC%83%81-%EA%B2%A8%EC%9A%B8-%EC%9A%94%EC%86%8C%EC%99%80-%EB%8B%A8%EC%9D%BC-%EB%82%A0%EC%94%A8-%EC%95%84%EC%9D%B4%EC%BD%98-%EA%B5%AC%EB%A6%84-%ED%9D%B0%EC%83%89%EC%97%90-%EA%B7%B8%EB%A6%BC-%ED%91%B8%EB%A5%B8-%EB%88%88%EC%9D%B4-%EA%B5%AC%EB%A6%84-%ED%9D%90%EB%A6%B0-%EA%B8%B0%ED%9B%84-%EB%88%88%EC%9D%B4-%EA%B5%AC%EB%A6%84-%EA%B2%A8%EC%9A%B8-%EA%B5%AC%EB%A6%84-%EB%88%88%EC%9D%B4-%ED%95%98%EB%A3%A8-%EA%B8%B0%ED%98%B8%EC%9E%85%EB%8B%88%EB%8B%A4-%EA%B8%B0%EC%83%81-%EA%B2%A8%EC%9A%B8-%EC%9A%94%EC%86%8C.jpg'}],
+                weather_n:0,
+                weather_state:'',
+                citys : [{cityName : 'MUMBAI',src : 'https://s5.postimg.cc/lifnombwz/mumbai1.png'},
+                        {cityName:'PARIS',src:"paris.png"},
+                        {cityName : 'ROMA',src :'colosseum.png'},
+                        {cityName : 'SEOUL',src :'gwanghwadoor.png'},
+                        {cityName:'TOKYO',src:'tokyo.png'},
+                        {cityName:'NEWYORK',src:'newyork.png'}
+                        
+                ],
+                city_n :0
+            },
+
+            computed: {
+                today: function()
+                {
+                    var time = new Date();
+                    var year = time.getYear();
+                    year += 1900;
+                    var month = time.getMonth();
+                    months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    month = months[month]
+                    var date = time.getDate();
+                    var day = time.getDay();
+                    days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                    day = days[day];
+                    var currentTime = day+','+' '+date+' '+month+' '+year;
+                    return currentTime;
+                }
+            },
+            watch:{
+                cityName: function()
+                {
+                    for(i=0; i<this.citys.length;i++)
+                    {
+                        if(this.cityName == this.citys[i].cityName)
+                        {
+                        this.city_n = i;
+                        }
+                    }
+                },
+                weather_state: function()
+                {
+                    for(i=0; i<4;i++){
+                        if(this.weather_state == this.weather_src[i].state){
+                            this.weather_n = i;
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+        </script>
+    </body>
+
+</html>
