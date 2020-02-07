@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="description" content="Calender"/>
+        <script src="https://unpkg.com/vue"></script>
+        <title>Calender</title>
+
+        <body>
+            <div id="app" style='width: 100%; height: 100%;'>
+            <table border="4" bordercolor="#FFFFFF">
+                <input v-model="y" type="text">년
+                <input v-model="m" type="text">월
+                <input v-model="d" type="text">일
+                <button @click="calender">click</button>
+                <tr><td v-for="day in week">{{day}}</td></tr>
+
+                <tr v-for="i in 6">
+                    <td v-for="j in 7" align="center">
+                        {{ days[i][j] }}
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+            <script>
+                new Vue({
+                    el: '#app',
+                    data: 
+                    {
+                        week: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
+                        y: "",
+                        m: "",
+                        d: "",
+                        days: [
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0]
+                        ],
+                        n: ""
+                    },
+                    methods: {
+                            calender: function()
+                        {
+                            
+                            var ymd = this.y + '/' + this.m + '/' + this.d;
+                            var time = new Date(ymd);
+                            time.setMonth(time.getMonth() + 1); // 다음 달 구해서
+                            time.setDate(1);    // 다음달 1일만들어서
+
+                            var endD = new Date(time - 1);  // 하루를 뺌
+                            var endDate = endD.getDate();   // 이 달의 마지막 일
+                            alert(endDate);
+                            endD.setDate(1); // 이 달 1일 만들어서
+                            var startDay = endD.getDay();   // 시작 요일
+                            alert(startDay);
+                            
+                            var number = 1;
+                            
+                            for(i = 0; i<6; i++)
+                            {
+                                if(i == 0) {var j=startDay-1;}
+                                else {var j=0;}
+                                for(j; j<7; j++)
+                                {
+                                    
+                                    if(number<=endDate)
+                                    {
+                                        this.days[i][j] = number++;
+                                    }
+                                }
+                            }
+                            alert(this.days);
+                        }
+                    }
+                })
+            </script>
+        </body>
+    </head>
+</html>
